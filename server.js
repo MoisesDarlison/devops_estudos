@@ -1,15 +1,14 @@
-require('dotenv').config();
 
-const express = require('express');
+import * as dotenv from 'dotenv';
+dotenv.config();
+
+import express from "express";
+
 const app = express();
 
 app.get('/', (req, res) => {
-    console.log("Temos um acesso");
-    return res.status(200).send(`Hello TESTE!`);
-});
-
-const port = process.env.PORT || 8080;
-app.listen(port, () => {
-    console.log(`Temos uma Att 3...`);
-    console.log(`Server listening on port ${port}`);
-});
+    console.log("Init request hehe");
+    return res.status(200).json({ Message: "Success!" })
+})
+const { PORT = 3333 } = process.env
+app.listen(PORT, () => console.log("Listen on port:", PORT, "\n", new Date()))
