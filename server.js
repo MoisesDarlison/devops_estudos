@@ -5,7 +5,7 @@ const app = express();
 
 app.get('/', (req, res) => {
     console.log("Temos um acesso");
-    res.status(200).send(`Hello TESTE!`);
+    return res.status(200).send(`Hello TESTE!`);
 });
 
 const port = process.env.PORT || 8080;
