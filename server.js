@@ -4,7 +4,8 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-    res.send(`Hello, ${process.env.NAME}!`);
+    console.log("Temos um acesso");
+    res.status(200).send(`Hello TESTE!`);
 });
 
 const port = process.env.PORT || 3000;
