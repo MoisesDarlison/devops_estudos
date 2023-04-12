@@ -5,19 +5,19 @@ phases:
     commands:
       - echo "Starting pre-build phase"
       - aws --version
-      - aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 307110081435.dkr.ecr.us-east-2.amazonaws.com
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 307110081435.dkr.ecr.us-east-1.amazonaws.com
       - REPOSITORY_URI=307110081435.dkr.ecr.us-east-2.amazonaws.com/devopsgit
       - IMAGE_TAG="latest"
 
   build:
     commands:
       - echo "Starting build phase"
-      - docker build -t devopsgit .
-      - docker tag devopsgit:latest 307110081435.dkr.ecr.us-east-2.amazonaws.com/devopsgit:latest
+      - docker build -t devopsestudos .
+      - docker tag devopsestudos:latest 307110081435.dkr.ecr.us-east-1.amazonaws.com/devopsestudos:latest
   post_build:
     commands:
       - echo "Starting post-build phase"
-      - docker push 307110081435.dkr.ecr.us-east-2.amazonaws.com/devopsgit:latest
+      - docker push 307110081435.dkr.ecr.us-east-1.amazonaws.com/devopsestudos:latest
       - echo "Write image definitions file..."
       - printf '[{"name":"devOps","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
       - cat imagedefinitions.json
